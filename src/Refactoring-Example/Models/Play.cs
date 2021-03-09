@@ -1,8 +1,16 @@
-namespace Refactoring_Example
+namespace Refactoring_Example.Models
 {
     public class Play
     {
-        public string Name { get; set; }
-        public string Type { get; set; }
+        public Play(string id, string name, string type)
+        {
+            Id = id;
+            Name = name;
+            Type = type;
+        }
+
+        public string Id { get; }
+        public string Name { get; }
+        public string Type { get; }
     }
 }

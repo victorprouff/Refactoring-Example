@@ -4,18 +4,18 @@ using Refactoring_Example.Models;
 
 namespace Refactoring_Example
 {
-    public class Example
+    public class VideoClubStatement
     {
         public string Statement(Invoice invoice, Play[] plays)
         {
             long totalAmount = 0;
             var volumeCredits = 0;
-            var result = $"Statement for ${invoice.Customer}\n";
+            var result = $"Statement for ${invoice.Customer} \n";
             // var format
 
             foreach (var perf in invoice.Performances)
             {
-                var play = plays.First(p => p.Name == perf.PlayId);
+                var play = plays.First(p => p.Id == perf.PlayId);
                 long thisAmount = 0;
 
                 switch (play.Type)
@@ -53,7 +53,7 @@ namespace Refactoring_Example
                 totalAmount += thisAmount;
             }
 
-            result += $"Amount owed is {totalAmount / 100}\n";
+            result += $"Amount owed is {totalAmount / 100} \n";
             result += $"You earned {volumeCredits} credits\n";
             return result;
         }
