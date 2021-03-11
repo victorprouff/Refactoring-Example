@@ -14,8 +14,13 @@ namespace Refactoring_Example
         }
         public string Statement(Invoice invoice)
         {
+            return RenderPlainText(invoice);
+        }
+
+        private string RenderPlainText(Invoice invoice)
+        {
             var result = $"Statement for ${invoice.Customer} \n";
-            
+
             foreach (var performance in invoice.Performances)
             {
                 // Imprime la ligne de cette commande
