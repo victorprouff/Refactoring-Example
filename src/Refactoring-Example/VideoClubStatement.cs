@@ -14,13 +14,13 @@ namespace Refactoring_Example
         }
         public string Statement(Invoice invoice)
         {
-            var data = new Data();
+            var data = new Data(invoice.Customer);
             return RenderPlainText(data, invoice);
         }
 
         private string RenderPlainText(Data data, Invoice invoice)
         {
-            var result = $"Statement for ${invoice.Customer} \n";
+            var result = $"Statement for ${data.Customer} \n";
 
             foreach (var performance in invoice.Performances)
             {
