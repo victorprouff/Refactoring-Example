@@ -11,7 +11,6 @@ namespace Refactoring_Example
             long totalAmount = 0;
             var volumeCredits = 0;
             var result = $"Statement for ${invoice.Customer} \n";
-            // var format
 
             foreach (var perf in invoice.Performances)
             {
