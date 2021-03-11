@@ -18,12 +18,8 @@ namespace Refactoring_Example
             var result = $"Statement for ${invoice.Customer} \n";
             // var format
 
-            var volumeCredits = 0;
-            foreach (var performance in invoice.Performances)
-            {
-                volumeCredits += VolumeCreditsFor(performance);
-            }
-            
+            var volumeCredits = TotalVolumeCredits(invoice);
+
             foreach (var performance in invoice.Performances)
             {
                 // Imprime la ligne de cette commande
@@ -34,6 +30,17 @@ namespace Refactoring_Example
             result += $"Amount owed is {totalAmount / 100} \n";
             result += $"You earned {volumeCredits} credits\n";
             return result;
+        }
+
+        private int TotalVolumeCredits(Invoice invoice)
+        {
+            var volumeCredits = 0;
+            foreach (var performance in invoice.Performances)
+            {
+                volumeCredits += VolumeCreditsFor(performance);
+            }
+
+            return volumeCredits;
         }
 
         private int VolumeCreditsFor(Performance performance)
