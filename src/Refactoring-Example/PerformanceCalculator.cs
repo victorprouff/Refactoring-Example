@@ -17,16 +17,9 @@ namespace Refactoring_Example
             throw new Exception("Subclass responsibility");
         }
 
-        public int VolumeCredits()
+        public virtual int VolumeCredits()
         {
-            var result = Math.Max(Performance.Audience - 30, 0);
-
-            if (Performance.Play.Type == "comedie")
-            {
-                result += (int) Math.Floor((double) Performance.Audience / 5);
-            }
-
-            return result;
+            return Math.Max(Performance.Audience - 30, 0);
         }
     }
 }
