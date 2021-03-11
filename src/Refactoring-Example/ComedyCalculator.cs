@@ -25,7 +25,7 @@ namespace Refactoring_Example
         {
             var result = Math.Max(Performance.Audience - 30, 0);
 
-            if (Performance.Play.Type == "comedie")
+            if (Performance.Play.Type == "comedy")
             {
                 result += (int) Math.Floor((double) Performance.Audience / 5);
             }

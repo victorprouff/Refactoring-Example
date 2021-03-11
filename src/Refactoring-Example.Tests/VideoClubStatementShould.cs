@@ -27,7 +27,7 @@ namespace Refactoring_Example.Tests
                            " As You Like It: 580 (35 seats) \n" +
                            " Othello: 500 (40 seats) \n" +
                            "Amount owed is 1730 \n" +
-                           "You earned 40 credits\n";
+                           "You earned 47 credits\n";
             result.Should().BeEquivalentTo(expected);
         }
 
@@ -53,7 +53,7 @@ namespace Refactoring_Example.Tests
                            "<tr><td>Othello</td><td>40</td><td>500</td></tr>\n" +
                            "</table>\n" +
                            "<p>Amount owed is <em>1730</em></p>\n" +
-                           "<p>You earned <em>40</em> credits</p>\n";
+                           "<p>You earned <em>47</em> credits</p>\n";
             result.Should().BeEquivalentTo(expected);
         }
     }
