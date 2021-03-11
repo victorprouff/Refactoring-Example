@@ -19,7 +19,8 @@ namespace Refactoring_Example
                 invoice.Customer,
                 invoice.Performances,
                 TotalAmount(invoice.Performances),
-                TotalVolumeCredits(invoice.Performances));
+                TotalVolumeCredits(invoice.Performances),
+                _plays);
             
             return RenderPlainText(data);
         }
@@ -30,7 +31,6 @@ namespace Refactoring_Example
 
             foreach (var performance in data.Performances)
             {
-                // Imprime la ligne de cette commande
                 result += $" {PlayFor(performance.PlayId).Name}: {AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
             }
 
