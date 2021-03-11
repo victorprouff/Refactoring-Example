@@ -26,10 +26,7 @@ namespace Refactoring_Example
         {
             var result = $"Statement for ${data.Customer} \n";
 
-            foreach (var performance in data.Performances)
-            {
-                result += $" {data.PlayFor(performance.PlayId).Name}: {data.AmmontFor(performance)} ({performance.Audience} seats) \n";
-            }
+            result = data.Performances.Aggregate(result, (current, performance) => current + $" {data.PlayFor(performance.PlayId).Name}: {data.AmmontFor(performance)} ({performance.Audience} seats) \n");
 
             result += $"Amount owed is {data.TotalAmount} \n";
             result += $"You earned {data.TotalVolumeCredits} credits\n";
