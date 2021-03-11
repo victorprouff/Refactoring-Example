@@ -21,14 +21,8 @@ namespace Refactoring_Example
 
             foreach (var perf in invoice.Performances)
             {
-                // Ajoute des crédits de volume
-                volumeCredits += Math.Max(perf.Audience - 30, 0);
-                //Ajoute des crédits par groupe de 5 spectateurs assistant à une comédie
-                if (PlayFor(perf.PlayId).Type == "comedie")
-                {
-                    volumeCredits += (int)Math.Floor((double)perf.Audience / 5);
-                }
-                
+                volumeCredits += VolumeCreditsFor(perf);
+
                 // Imprime la ligne de cette commande
                 result += $" {PlayFor(perf.PlayId).Name}: {AmmontFor(perf) / 100} ({perf.Audience} seats) \n";
                 totalAmount += AmmontFor(perf);
@@ -37,6 +31,18 @@ namespace Refactoring_Example
             result += $"Amount owed is {totalAmount / 100} \n";
             result += $"You earned {volumeCredits} credits\n";
             return result;
+        }
+
+        private int VolumeCreditsFor(Performance perf)
+        {
+            var volumeCredits = Math.Max(perf.Audience - 30, 0);
+
+            if (PlayFor(perf.PlayId).Type == "comedie")
+            {
+                volumeCredits += (int) Math.Floor((double) perf.Audience / 5);
+            }
+
+            return volumeCredits;
         }
 
         private Play PlayFor(string playId) => _plays.First(p => p.Id == playId);
