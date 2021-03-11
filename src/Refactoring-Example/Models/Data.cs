@@ -33,7 +33,7 @@ namespace Refactoring_Example.Models
             return result;
         }
         
-        private long AmmontFor(Performance performance)
+        public long AmmontFor(Performance performance)
         {
             long result;
             switch (PlayFor(performance.PlayId).Type)

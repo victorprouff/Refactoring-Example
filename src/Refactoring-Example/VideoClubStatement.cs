@@ -28,42 +28,11 @@ namespace Refactoring_Example
 
             foreach (var performance in data.Performances)
             {
-                result += $" {data.PlayFor(performance.PlayId).Name}: {AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
+                result += $" {data.PlayFor(performance.PlayId).Name}: {data.AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
             }
 
             result += $"Amount owed is {data.TotalAmount / 100} \n";
             result += $"You earned {data.TotalVolumeCredits} credits\n";
-            return result;
-        }
-
-        private Play PlayFor(string playId) => _plays.First(p => p.Id == playId);
-        
-        private long AmmontFor(Performance performance)
-        {
-            long result;
-            switch (PlayFor(performance.PlayId).Type)
-            {
-                case "tragedy":
-                    result = 40000;
-                    if (performance.Audience > 30)
-                    {
-                        result += 1000 * (performance.Audience - 30);
-                    }
-
-                    break;
-                case "comedy":
-                    result = 30000;
-                    if (performance.Audience > 20)
-                    {
-                        result += 10000 + 500 * (performance.Audience - 20);
-                    }
-
-                    result += 300 * performance.Audience;
-                    break;
-                default:
-                    throw new Exception($"Unkwnon type : ${PlayFor(performance.PlayId).Type}");
-            }
-
             return result;
         }
     }
