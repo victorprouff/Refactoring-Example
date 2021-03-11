@@ -15,7 +15,7 @@ namespace Refactoring_Example
         }
         public string Statement(Invoice invoice)
         {
-            var data = new Data(invoice.Customer);
+            var data = new Data(invoice.Customer, invoice.Performances);
             return RenderPlainText(data, invoice);
         }
 
@@ -23,14 +23,14 @@ namespace Refactoring_Example
         {
             var result = $"Statement for ${data.Customer} \n";
 
-            foreach (var performance in invoice.Performances)
+            foreach (var performance in data.Performances)
             {
                 // Imprime la ligne de cette commande
                 result += $" {PlayFor(performance.PlayId).Name}: {AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
             }
 
-            result += $"Amount owed is {TotalAmount(invoice.Performances) / 100} \n";
-            result += $"You earned {TotalVolumeCredits(invoice.Performances)} credits\n";
+            result += $"Amount owed is {TotalAmount(data.Performances) / 100} \n";
+            result += $"You earned {TotalVolumeCredits(data.Performances)} credits\n";
             return result;
         }
 
