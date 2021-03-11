@@ -16,14 +16,13 @@ namespace Refactoring_Example
         {
             var result = $"Statement for ${invoice.Customer} \n";
             
-            var totalAmount = TotalAmount(invoice);
             foreach (var performance in invoice.Performances)
             {
                 // Imprime la ligne de cette commande
                 result += $" {PlayFor(performance.PlayId).Name}: {AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
             }
 
-            result += $"Amount owed is {totalAmount / 100} \n";
+            result += $"Amount owed is {TotalAmount(invoice) / 100} \n";
             result += $"You earned {TotalVolumeCredits(invoice)} credits\n";
             return result;
         }
