@@ -26,11 +26,17 @@ namespace Refactoring_Example
         {
             var result = $"Statement for ${data.Customer} \n";
 
-            result = data.Performances.Aggregate(result, (current, performance) => current + $" {data.PlayFor(performance.PlayId).Name}: {data.AmmontFor(performance)} ({performance.Audience} seats) \n");
+            result = data.Performances.Aggregate(result, (current, performance) =>
+                current + $" {data.PlayFor(performance.PlayId).Name}: {data.AmmontFor(performance)} ({performance.Audience} seats) \n");
 
             result += $"Amount owed is {data.TotalAmount} \n";
             result += $"You earned {data.TotalVolumeCredits} credits\n";
             return result;
+        }
+
+        private string RenderHtml(Data data)
+        {
+            return "";
         }
     }
 }
