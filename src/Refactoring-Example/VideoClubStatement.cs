@@ -37,7 +37,7 @@ namespace Refactoring_Example
             var result = $"Statement for {data.Customer} \n";
 
             result = data.Performances.Aggregate(result, (current, performance) =>
-                current + $" {data.PlayFor(performance.PlayId).Name}: {data.AmmontFor(performance)} ({performance.Audience} seats) \n");
+                current + $" {performance.Play.Name}: {data.AmmontFor(performance)} ({performance.Audience} seats) \n");
 
             result += $"Amount owed is {data.TotalAmount} \n";
             result += $"You earned {data.TotalVolumeCredits} credits\n";
@@ -51,7 +51,7 @@ namespace Refactoring_Example
             result += "<tr><th>play</th><th>seats</th><th>cost</th></tr>";
             
             result = data.Performances.Aggregate(result, (current, performance) => 
-                current + $"<tr><td>{data.PlayFor(performance.PlayId).Name}</td><td>{performance.Audience}</td><td>{data.AmmontFor(performance)}</td></tr>\n");
+                current + $"<tr><td>{performance.Play.Name}</td><td>{performance.Audience}</td><td>{data.AmmontFor(performance)}</td></tr>\n");
 
             result += "</table>\n";
 

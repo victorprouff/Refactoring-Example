@@ -20,13 +20,11 @@ namespace Refactoring_Example
         public long TotalAmount => Performances.Sum(AmmontFor);
         public int TotalVolumeCredits => Performances.Sum(VolumeCreditsFor);
         
-        public Play PlayFor(string playId) => Plays.First(p => p.Id == playId);
-        
         private int VolumeCreditsFor(Performance performance)
         {
             var result = Math.Max(performance.Audience - 30, 0);
 
-            if (PlayFor(performance.PlayId).Type == "comedie")
+            if (performance.Play.Type == "comedie")
             {
                 result += (int) Math.Floor((double) performance.Audience / 5);
             }
@@ -37,7 +35,7 @@ namespace Refactoring_Example
         public long AmmontFor(Performance performance)
         {
             long result;
-            switch (PlayFor(performance.PlayId).Type)
+            switch (performance.Play.Type)
             {
                 case "tragedy":
                     result = 40000;
@@ -57,7 +55,7 @@ namespace Refactoring_Example
                     result += 300 * performance.Audience;
                     break;
                 default:
-                    throw new Exception($"Unkwnon type : ${PlayFor(performance.PlayId).Type}");
+                    throw new Exception($"Unkwnon type : ${performance.Play.Type}");
             }
 
             return result / 100;
