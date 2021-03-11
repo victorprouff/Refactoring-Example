@@ -34,7 +34,7 @@ namespace Refactoring_Example
 
         private string RenderPlainText(Data data)
         {
-            var result = $"Statement for ${data.Customer} \n";
+            var result = $"Statement for {data.Customer} \n";
 
             result = data.Performances.Aggregate(result, (current, performance) =>
                 current + $" {data.PlayFor(performance.PlayId).Name}: {data.AmmontFor(performance)} ({performance.Audience} seats) \n");
@@ -46,7 +46,7 @@ namespace Refactoring_Example
 
         private string RenderHtml(Data data)
         {
-            var result = $"<h1>Statement for ${data.Customer} </h1>\n";
+            var result = $"<h1>Statement for {data.Customer} </h1>\n";
             result += "<table>\n";
             result += "<tr><th>play</th><th>seats</th><th>cost</th></tr>";
             

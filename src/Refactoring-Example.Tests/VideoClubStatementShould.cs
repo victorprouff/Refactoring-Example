@@ -29,7 +29,7 @@ namespace Refactoring_Example.Tests
             var exemple = new VideoClubStatement(plays);
             var result = exemple.Statement(invoice);
 
-            var expected = "Statement for $BigCo \n" +
+            var expected = "Statement for BigCo \n" +
                            " Hamlet: 650 (55 seats) \n" +
                            " As You Like It: 580 (35 seats) \n" +
                            " Othello: 500 (40 seats) \n" +
@@ -60,7 +60,7 @@ namespace Refactoring_Example.Tests
             var exemple = new VideoClubStatement(plays);
             var result = exemple.StatementHtml(invoice);
 
-            var expected = "<h1>Statement for $BigCo </h1>\n" +
+            var expected = "<h1>Statement for BigCo </h1>\n" +
                            "<table>\n" +
                            "<tr><th>play</th><th>seats</th><th>cost</th></tr><tr><td>Hamlet</td><td>55</td><td>650</td></tr>\n" +
                            "<tr><td>As You Like It</td><td>35</td><td>580</td></tr>\n" +
