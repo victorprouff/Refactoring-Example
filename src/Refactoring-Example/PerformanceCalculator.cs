@@ -40,5 +40,17 @@ namespace Refactoring_Example
 
             return result / 100;
         }
+        
+        public int VolumeCredits()
+        {
+            var result = Math.Max(Performance.Audience - 30, 0);
+
+            if (Performance.Play.Type == "comedie")
+            {
+                result += (int) Math.Floor((double) Performance.Audience / 5);
+            }
+
+            return result;
+        }
     }
 }

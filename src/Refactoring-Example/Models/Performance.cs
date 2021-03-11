@@ -13,5 +13,6 @@ namespace Refactoring_Example.Models
         public Play Play { get; }
         public int Audience { get; }
         public long Amount => _calculator.Amount();
+        public int VolumeCredits => _calculator.VolumeCredits();
     }
 }
