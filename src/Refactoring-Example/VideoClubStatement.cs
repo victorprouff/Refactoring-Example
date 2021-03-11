@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Refactoring_Example.Models;
 
@@ -28,14 +29,14 @@ namespace Refactoring_Example
                 result += $" {PlayFor(performance.PlayId).Name}: {AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
             }
 
-            result += $"Amount owed is {TotalAmount(invoice) / 100} \n";
-            result += $"You earned {TotalVolumeCredits(invoice)} credits\n";
+            result += $"Amount owed is {TotalAmount(invoice.Performances) / 100} \n";
+            result += $"You earned {TotalVolumeCredits(invoice.Performances)} credits\n";
             return result;
         }
 
-        private long TotalAmount(Invoice invoice) => invoice.Performances.Sum(AmmontFor);
+        private long TotalAmount(IEnumerable<Performance> performances) => performances.Sum(AmmontFor);
 
-        private int TotalVolumeCredits(Invoice invoice) => invoice.Performances.Sum(VolumeCreditsFor);
+        private int TotalVolumeCredits(IEnumerable<Performance> performances) => performances.Sum(VolumeCreditsFor);
 
         private int VolumeCreditsFor(Performance performance)
         {
