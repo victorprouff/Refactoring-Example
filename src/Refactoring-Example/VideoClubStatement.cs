@@ -43,7 +43,7 @@ namespace Refactoring_Example
                 // Ajoute des crédits de volume
                 volumeCredits += Math.Max(perf.Audience - 30, 0);
                 //Ajoute des crédits par groupe de 5 spectateurs assistant à une comédie
-                if (play.Type == "comedie")
+                if (play.Type == "comedy")
                 {
                     volumeCredits += (int)Math.Floor((double)perf.Audience / 5);
                 }

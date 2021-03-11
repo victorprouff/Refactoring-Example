@@ -34,7 +34,7 @@ namespace Refactoring_Example.Tests
                            " As You Like It: 580 (35 seats) \n" +
                            " Othello: 500 (40 seats) \n" +
                            "Amount owed is 1730 \n" +
-                           "You earned 40 credits\n";
+                           "You earned 47 credits\n";
             result.Should().BeEquivalentTo(expected);
         }
     }
