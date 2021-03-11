@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using Refactoring_Example.Models;
 using Xunit;

@@ -15,9 +15,9 @@ namespace Refactoring_Example.Models
 
         public string Customer { get; }
         public IEnumerable<Performance> Performances { get; }
+        public Play[] Plays { get; }
         public long TotalAmount => Performances.Sum(AmmontFor);
         public int TotalVolumeCredits => Performances.Sum(VolumeCreditsFor);
-        public Play[] Plays { get; }
         
         public Play PlayFor(string playId) => Plays.First(p => p.Id == playId);
         
@@ -59,7 +59,7 @@ namespace Refactoring_Example.Models
                     throw new Exception($"Unkwnon type : ${PlayFor(performance.PlayId).Type}");
             }
 
-            return result;
+            return result / 100;
         }
     }
 }

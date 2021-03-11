@@ -28,10 +28,10 @@ namespace Refactoring_Example
 
             foreach (var performance in data.Performances)
             {
-                result += $" {data.PlayFor(performance.PlayId).Name}: {data.AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
+                result += $" {data.PlayFor(performance.PlayId).Name}: {data.AmmontFor(performance)} ({performance.Audience} seats) \n";
             }
 
-            result += $"Amount owed is {data.TotalAmount / 100} \n";
+            result += $"Amount owed is {data.TotalAmount} \n";
             result += $"You earned {data.TotalVolumeCredits} credits\n";
             return result;
         }
