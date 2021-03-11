@@ -21,6 +21,16 @@ namespace Refactoring_Example
             
             return RenderPlainText(data);
         }
+        
+        public string StatementHtml(Invoice invoice)
+        {
+            var data = new Data(
+                invoice.Customer,
+                invoice.Performances,
+                _plays);
+            
+            return RenderHtml(data);
+        }
 
         private string RenderPlainText(Data data)
         {
