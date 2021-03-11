@@ -14,9 +14,9 @@ namespace Refactoring_Example.Tests
                 "BigCo",
                 performances: new[]
                 {
-                    new Performance("hamlet", 55),
-                    new Performance("as-like", 35),
-                    new Performance("othello", 40)
+                    new Performance(new Play("hamlet", "Hamlet", "tragedy"),"hamlet", 55),
+                    new Performance(new Play("as-like", "As You Like It", "comedy"),"as-like", 35),
+                    new Performance(new Play("othello", "Othello", "tragedy"),"othello", 40)
                 });
 
             var plays = new[]
@@ -45,9 +45,9 @@ namespace Refactoring_Example.Tests
                 "BigCo",
                 performances: new[]
                 {
-                    new Performance("hamlet", 55),
-                    new Performance("as-like", 35),
-                    new Performance("othello", 40)
+                    new Performance(new Play("hamlet", "Hamlet", "tragedy"),"hamlet", 55),
+                    new Performance(new Play("as-like", "As You Like It", "comedy"),"as-like", 35),
+                    new Performance(new Play("othello", "Othello", "tragedy"),"othello", 40)
                 });
 
             var plays = new[]

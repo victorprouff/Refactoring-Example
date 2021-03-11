@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Refactoring_Example.Models;
 
-namespace Refactoring_Example.Models
+namespace Refactoring_Example
 {
     public class Data
     {
