@@ -2,7 +2,7 @@ namespace Refactoring_Example.Models
 {
     public class Play
     {
-        public Play(string id, string name, string type)
+        public Play(string id, string name, PlayType type)
         {
             Id = id;
             Name = name;
@@ -11,6 +11,6 @@ namespace Refactoring_Example.Models
 
         public string Id { get; }
         public string Name { get; }
-        public string Type { get; }
+        public PlayType Type { get; }
     }
 }

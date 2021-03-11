@@ -14,9 +14,9 @@ namespace Refactoring_Example.Tests
                 "BigCo",
                 performances: new[]
                 {
-                    new Performance(new Play("hamlet", "Hamlet", "tragedy"), 55),
-                    new Performance(new Play("as-like", "As You Like It", "comedy"), 35),
-                    new Performance(new Play("othello", "Othello", "tragedy"), 40)
+                    new Performance(new Play("hamlet", "Hamlet", PlayType.Tragedy), 55),
+                    new Performance(new Play("as-like", "As You Like It", PlayType.Comedy), 35),
+                    new Performance(new Play("othello", "Othello", PlayType.Tragedy), 40)
                 });
 
             var exemple = new VideoClubStatement();
@@ -38,9 +38,9 @@ namespace Refactoring_Example.Tests
                 "BigCo",
                 performances: new[]
                 {
-                    new Performance(new Play("hamlet", "Hamlet", "tragedy"), 55),
-                    new Performance(new Play("as-like", "As You Like It", "comedy"), 35),
-                    new Performance(new Play("othello", "Othello", "tragedy"), 40)
+                    new Performance(new Play("hamlet", "Hamlet", PlayType.Tragedy), 55),
+                    new Performance(new Play("as-like", "As You Like It", PlayType.Comedy), 35),
+                    new Performance(new Play("othello", "Othello", PlayType.Tragedy), 40)
                 });
 
             var exemple = new VideoClubStatement();

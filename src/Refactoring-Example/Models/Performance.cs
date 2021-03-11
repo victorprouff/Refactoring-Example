@@ -21,8 +21,8 @@ namespace Refactoring_Example.Models
         {
             return Play.Type switch
             {
-                "tragedy" => new TragedyCalculator(this),
-                "comedy" => new ComedyCalculator(this),
+                PlayType.Tragedy => new TragedyCalculator(this),
+                PlayType.Comedy => new ComedyCalculator(this),
                 _ => throw new Exception($"Unkwnon type : {Play.Type}")
             };
         }
