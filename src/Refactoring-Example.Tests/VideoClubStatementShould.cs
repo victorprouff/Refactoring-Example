@@ -26,8 +26,8 @@ namespace Refactoring_Example.Tests
                 new Play("othello", "Othello", "tragedy")
             };
             
-            var exemple = new VideoClubStatement();
-            var result = exemple.Statement(invoice, plays);
+            var exemple = new VideoClubStatement(plays);
+            var result = exemple.Statement(invoice);
 
             var expected = "Statement for $BigCo \n" +
                            " Hamlet: 650 (55 seats) \n" +
