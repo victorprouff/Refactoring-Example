@@ -19,15 +19,12 @@ namespace Refactoring_Example.Models
 
         private PerformanceCalculator CreatePerformanceCalculator()
         {
-            switch (Play.Type)
+            return Play.Type switch
             {
-                case "tragedy":
-                    return new TragedyCalculator(this);
-                case "comedy":
-                    return new ComedyCalculator(this);
-                default:
-                    throw new Exception($"Unkwnon type : {Play.Type}");
-            }
+                "tragedy" => new TragedyCalculator(this),
+                "comedy" => new ComedyCalculator(this),
+                _ => throw new Exception($"Unkwnon type : {Play.Type}")
+            };
         }
     }
 }
