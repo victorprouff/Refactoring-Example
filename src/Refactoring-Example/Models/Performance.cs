@@ -1,3 +1,5 @@
+using System;
+
 namespace Refactoring_Example.Models
 {
     public class Performance
@@ -7,12 +9,25 @@ namespace Refactoring_Example.Models
         {
             Play = play;
             Audience = audience;
-            _calculator = new PerformanceCalculator(this);
+            _calculator = CreatePerformanceCalculator();
         }
 
         public Play Play { get; }
         public int Audience { get; }
         public long Amount => _calculator.Amount();
         public int VolumeCredits => _calculator.VolumeCredits();
+
+        private PerformanceCalculator CreatePerformanceCalculator()
+        {
+            switch (Play.Type)
+            {
+                case "tragedy":
+                    return new TragedyCalculator(this);
+                case "comedy":
+                    return new ComedyCalculator(this);
+                default:
+                    throw new Exception($"Unkwnon type : {Play.Type}");
+            }
+        }
     }
 }
