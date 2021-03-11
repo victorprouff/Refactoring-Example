@@ -36,33 +36,33 @@ namespace Refactoring_Example
             return result;
         }
 
-        private long AmmontFor(Play play, Performance perf)
+        private long AmmontFor(Play play, Performance performance)
         {
-            long thisAmount;
+            long result;
             switch (play.Type)
             {
                 case "tragedy":
-                    thisAmount = 40000;
-                    if (perf.Audience > 30)
+                    result = 40000;
+                    if (performance.Audience > 30)
                     {
-                        thisAmount += 1000 * (perf.Audience - 30);
+                        result += 1000 * (performance.Audience - 30);
                     }
 
                     break;
                 case "comedy":
-                    thisAmount = 30000;
-                    if (perf.Audience > 20)
+                    result = 30000;
+                    if (performance.Audience > 20)
                     {
-                        thisAmount += 10000 + 500 * (perf.Audience - 20);
+                        result += 10000 + 500 * (performance.Audience - 20);
                     }
 
-                    thisAmount += 300 * perf.Audience;
+                    result += 300 * performance.Audience;
                     break;
                 default:
                     throw new Exception($"Unkwnon type : ${play.Type}");
             }
 
-            return thisAmount;
+            return result;
         }
     }
 }
