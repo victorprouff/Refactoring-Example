@@ -21,8 +21,6 @@ namespace Refactoring_Example
 
             foreach (var perf in invoice.Performances)
             {
-                long thisAmount = AmmontFor(perf);
-
                 // Ajoute des crédits de volume
                 volumeCredits += Math.Max(perf.Audience - 30, 0);
                 //Ajoute des crédits par groupe de 5 spectateurs assistant à une comédie
@@ -32,8 +30,8 @@ namespace Refactoring_Example
                 }
                 
                 // Imprime la ligne de cette commande
-                result += $" {PlayFor(perf.PlayId).Name}: {thisAmount / 100} ({perf.Audience} seats) \n";
-                totalAmount += thisAmount;
+                result += $" {PlayFor(perf.PlayId).Name}: {AmmontFor(perf) / 100} ({perf.Audience} seats) \n";
+                totalAmount += AmmontFor(perf);
             }
 
             result += $"Amount owed is {totalAmount / 100} \n";
