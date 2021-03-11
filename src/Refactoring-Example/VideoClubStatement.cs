@@ -16,11 +16,7 @@ namespace Refactoring_Example
         {
             var result = $"Statement for ${invoice.Customer} \n";
             
-            long totalAmount = 0;
-            foreach (var performance in invoice.Performances)
-            {
-                totalAmount += AmmontFor(performance);
-            }
+            var totalAmount = TotalAmount(invoice);
             foreach (var performance in invoice.Performances)
             {
                 // Imprime la ligne de cette commande
@@ -31,6 +27,8 @@ namespace Refactoring_Example
             result += $"You earned {TotalVolumeCredits(invoice)} credits\n";
             return result;
         }
+
+        private long TotalAmount(Invoice invoice) => invoice.Performances.Sum(AmmontFor);
 
         private int TotalVolumeCredits(Invoice invoice) => invoice.Performances.Sum(VolumeCreditsFor);
 
