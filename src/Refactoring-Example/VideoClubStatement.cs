@@ -15,14 +15,17 @@ namespace Refactoring_Example
         public string Statement(Invoice invoice)
         {
             long totalAmount = 0;
-            var volumeCredits = 0;
             var result = $"Statement for ${invoice.Customer} \n";
             // var format
 
+            var volumeCredits = 0;
             foreach (var performance in invoice.Performances)
             {
                 volumeCredits += VolumeCreditsFor(performance);
-
+            }
+            
+            foreach (var performance in invoice.Performances)
+            {
                 // Imprime la ligne de cette commande
                 result += $" {PlayFor(performance.PlayId).Name}: {AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
                 totalAmount += AmmontFor(performance);
