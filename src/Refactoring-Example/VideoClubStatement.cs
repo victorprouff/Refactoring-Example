@@ -6,7 +6,13 @@ namespace Refactoring_Example
 {
     public class VideoClubStatement
     {
-        public string Statement(Invoice invoice, Play[] plays)
+        private readonly Play[] _plays;
+
+        public VideoClubStatement(Play[] plays)
+        {
+            _plays = plays;
+        }
+        public string Statement(Invoice invoice)
         {
             long totalAmount = 0;
             var volumeCredits = 0;
@@ -15,19 +21,18 @@ namespace Refactoring_Example
 
             foreach (var perf in invoice.Performances)
             {
-                var play = plays.First(p => p.Id == perf.PlayId);
-                long thisAmount = AmmontFor(play, perf);
+                long thisAmount = AmmontFor(perf);
 
                 // Ajoute des crédits de volume
                 volumeCredits += Math.Max(perf.Audience - 30, 0);
                 //Ajoute des crédits par groupe de 5 spectateurs assistant à une comédie
-                if (play.Type == "comedie")
+                if (PlayFor(perf.PlayId).Type == "comedie")
                 {
                     volumeCredits += (int)Math.Floor((double)perf.Audience / 5);
                 }
                 
                 // Imprime la ligne de cette commande
-                result += $" {play.Name}: {thisAmount / 100} ({perf.Audience} seats) \n";
+                result += $" {PlayFor(perf.PlayId).Name}: {thisAmount / 100} ({perf.Audience} seats) \n";
                 totalAmount += thisAmount;
             }
 
@@ -36,10 +41,12 @@ namespace Refactoring_Example
             return result;
         }
 
-        private long AmmontFor(Play play, Performance performance)
+        private Play PlayFor(string playId) => _plays.First(p => p.Id == playId);
+
+        private long AmmontFor(Performance performance)
         {
             long result;
-            switch (play.Type)
+            switch (PlayFor(performance.PlayId).Type)
             {
                 case "tragedy":
                     result = 40000;
@@ -59,7 +66,7 @@ namespace Refactoring_Example
                     result += 300 * performance.Audience;
                     break;
                 default:
-                    throw new Exception($"Unkwnon type : ${play.Type}");
+                    throw new Exception($"Unkwnon type : ${PlayFor(performance.PlayId).Type}");
             }
 
             return result;
