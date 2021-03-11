@@ -12,9 +12,7 @@ namespace Refactoring_Example
 
         public Performance Performance { get; }
 
-        public long Amount => AmountFor();
-
-        private long AmountFor()
+        public long Amount()
         {
             long result;
             switch (Performance.Play.Type)
