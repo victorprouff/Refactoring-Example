@@ -34,13 +34,7 @@ namespace Refactoring_Example
 
         private int TotalVolumeCredits(Invoice invoice)
         {
-            var volumeCredits = 0;
-            foreach (var performance in invoice.Performances)
-            {
-                volumeCredits += VolumeCreditsFor(performance);
-            }
-
-            return volumeCredits;
+            return invoice.Performances.Sum(performance => VolumeCreditsFor(performance));
         }
 
         private int VolumeCreditsFor(Performance performance)
