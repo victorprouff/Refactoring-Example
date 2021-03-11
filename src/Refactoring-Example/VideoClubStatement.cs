@@ -16,10 +16,10 @@ namespace Refactoring_Example
         public string Statement(Invoice invoice)
         {
             var data = new Data(invoice.Customer, invoice.Performances);
-            return RenderPlainText(data, invoice);
+            return RenderPlainText(data);
         }
 
-        private string RenderPlainText(Data data, Invoice invoice)
+        private string RenderPlainText(Data data)
         {
             var result = $"Statement for ${data.Customer} \n";
 
