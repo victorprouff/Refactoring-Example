@@ -6,18 +6,11 @@ namespace Refactoring_Example
 {
     public class VideoClubStatement
     {
-        private readonly Play[] _plays;
-
-        public VideoClubStatement(Play[] plays)
-        {
-            _plays = plays;
-        }
         public string Statement(Invoice invoice)
         {
             var data = new Data(
                 invoice.Customer,
-                invoice.Performances,
-                _plays);
+                invoice.Performances);
             
             return RenderPlainText(data);
         }
@@ -26,8 +19,7 @@ namespace Refactoring_Example
         {
             var data = new Data(
                 invoice.Customer,
-                invoice.Performances,
-                _plays);
+                invoice.Performances);
             
             return RenderHtml(data);
         }

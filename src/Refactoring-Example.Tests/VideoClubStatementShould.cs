@@ -19,14 +19,7 @@ namespace Refactoring_Example.Tests
                     new Performance(new Play("othello", "Othello", "tragedy"),"othello", 40)
                 });
 
-            var plays = new[]
-            {
-                new Play("hamlet", "Hamlet", "tragedy"),
-                new Play("as-like", "As You Like It", "comedy"),
-                new Play("othello", "Othello", "tragedy")
-            };
-
-            var exemple = new VideoClubStatement(plays);
+            var exemple = new VideoClubStatement();
             var result = exemple.Statement(invoice);
 
             var expected = "Statement for BigCo \n" +
@@ -50,14 +43,7 @@ namespace Refactoring_Example.Tests
                     new Performance(new Play("othello", "Othello", "tragedy"),"othello", 40)
                 });
 
-            var plays = new[]
-            {
-                new Play("hamlet", "Hamlet", "tragedy"),
-                new Play("as-like", "As You Like It", "comedy"),
-                new Play("othello", "Othello", "tragedy")
-            };
-
-            var exemple = new VideoClubStatement(plays);
+            var exemple = new VideoClubStatement();
             var result = exemple.StatementHtml(invoice);
 
             var expected = "<h1>Statement for BigCo </h1>\n" +

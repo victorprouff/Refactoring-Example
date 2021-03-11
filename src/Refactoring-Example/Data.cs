@@ -7,16 +7,14 @@ namespace Refactoring_Example
 {
     public class Data
     {
-        public Data(string customer, IEnumerable<Performance> performances, Play[] plays)
+        public Data(string customer, IEnumerable<Performance> performances)
         {
             Customer = customer;
             Performances = performances;
-            Plays = plays;
         }
 
         public string Customer { get; }
         public IEnumerable<Performance> Performances { get; }
-        public Play[] Plays { get; }
         public long TotalAmount => Performances.Sum(AmmontFor);
         public int TotalVolumeCredits => Performances.Sum(VolumeCreditsFor);
         
