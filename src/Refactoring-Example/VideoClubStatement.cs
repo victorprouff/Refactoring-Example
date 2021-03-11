@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Refactoring_Example.Models;
 
@@ -18,8 +17,6 @@ namespace Refactoring_Example
             var data = new Data(
                 invoice.Customer,
                 invoice.Performances,
-                TotalAmount(invoice.Performances),
-                TotalVolumeCredits(invoice.Performances),
                 _plays);
             
             return RenderPlainText(data);
@@ -31,7 +28,7 @@ namespace Refactoring_Example
 
             foreach (var performance in data.Performances)
             {
-                result += $" {PlayFor(performance.PlayId).Name}: {AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
+                result += $" {data.PlayFor(performance.PlayId).Name}: {AmmontFor(performance) / 100} ({performance.Audience} seats) \n";
             }
 
             result += $"Amount owed is {data.TotalAmount / 100} \n";
@@ -39,24 +36,8 @@ namespace Refactoring_Example
             return result;
         }
 
-        private long TotalAmount(IEnumerable<Performance> performances) => performances.Sum(AmmontFor);
-
-        private int TotalVolumeCredits(IEnumerable<Performance> performances) => performances.Sum(VolumeCreditsFor);
-
-        private int VolumeCreditsFor(Performance performance)
-        {
-            var result = Math.Max(performance.Audience - 30, 0);
-
-            if (PlayFor(performance.PlayId).Type == "comedie")
-            {
-                result += (int) Math.Floor((double) performance.Audience / 5);
-            }
-
-            return result;
-        }
-
         private Play PlayFor(string playId) => _plays.First(p => p.Id == playId);
-
+        
         private long AmmontFor(Performance performance)
         {
             long result;
